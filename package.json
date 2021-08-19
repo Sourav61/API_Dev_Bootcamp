@@ -1,17 +1,20 @@
 {
-  "name": "bootcamp",
+  "name": "timestamp",
   "version": "1.0.0",
-  "description": "",
+  "dependencies": {
+  "express": "^4.14.0",
+  "moment": "^2.15.1"
+  },
+  "engines": {
+  "node": "4.6.1"
+  },
+  "description": "this is the timestamp challenge for FCC",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon index",
-    "start": "node index"
+  "start": "node index.js",
+  "dev": "npx nodemon index"
+
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "author": "john gillespie",
+  "license": "ISC"
 }
