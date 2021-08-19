@@ -6,7 +6,7 @@
   "moment": "^2.15.1"
   },
   "engines": {
-  "node": "4.6.1"
+  "node": "4.7.0"
   },
   "description": "this is the timestamp challenge for FCC",
   "main": "index.js",
