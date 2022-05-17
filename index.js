@@ -6,7 +6,7 @@ const connectToDB = require("./connection.js");
 
 const userModel = require("./user");
 
-const app = express(); 
+const app = express();
 
 //configuration
 app.use(express.json());
@@ -16,16 +16,16 @@ app.use(express.json());
 // paramter:    none
 
 app.get("/", async (req, res) => {
-    
-    try{
+
+    try {
         const user = await userModel.find();
         return res.json({ user });
 
-    } catch(error){
-        return res.status(500).json({error: error.message})
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
     }
 
-    
+
 });
 
 // route:       /user/type/:type
@@ -33,21 +33,21 @@ app.get("/", async (req, res) => {
 // paramter:    type
 
 app.get("/user/type/:type", async (req, res) => {
-    try{
+    try {
         const { type } = req.params;
 
         const user = await userModel.find({ userType: type });
 
-        if(!user){
+        if (!user) {
             return res.json({ message: "No User Found" });
         }
 
         return res.json({ user });
-    } catch(error){
-        return res.status(500).json({error: error.message})
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
     }
-    
-    
+
+
 })
 
 // app.post("/user/:id", (req, res) => {
@@ -58,18 +58,18 @@ app.get("/user/type/:type", async (req, res) => {
 // description: To get all user based on id
 // paramter:    _id
 app.get("/user/:_id", async (req, res) => {
-    
-    try{
+
+    try {
         const { _id } = req.params;
         const user = await userModel.findById(_id);
 
-        if(!user){
+        if (!user) {
             return res.json({ message: "No User Found" });
         }
 
         return res.json({ user });
-    } catch(error){
-        return res.status(500).json({error: error.message})
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
     }
 
 });
@@ -81,18 +81,18 @@ app.get("/user/:_id", async (req, res) => {
 // paramter:    none
 //request body: user object
 
-app.post("/user/new", async (req,res) => {
-    try{
-        const{ newUser } = req.body;
+app.post("/user/new", async (req, res) => {
+    try {
+        const { newUser } = req.body;
 
         await userModel.create(newUser);
 
-        return res.json({ message: "User Created" }); 
-    } catch(error){
-        return res.status(500).json({error: error.message})
+        return res.json({ message: "User Created" });
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
     }
-    
-    
+
+
 });
 
 // route:       /user/update/:_id
@@ -101,22 +101,22 @@ app.post("/user/new", async (req,res) => {
 //request body: user object
 
 app.put("/user/update/:_id", async (req, res) => {
-    try{
+    try {
         const { _id } = req.params;
         const { userData } = req.body;
 
         const updateUser = await userModel.findByIdAndUpdate(
             _id,
-            { $set: userData }, 
-            { new: true } 
+            { $set: userData },
+            { new: true }
         );
 
         return res.json({ user: updateUser })
-    } catch(error){
-        return res.status(500).json({error: error.message})
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
     }
-    
-    
+
+
 })
 
 // route:       /user/delete/:_id
@@ -125,16 +125,16 @@ app.put("/user/update/:_id", async (req, res) => {
 //request body: none
 
 app.delete("/user/delete/:_id", async (req, res) => {
-    try{
+    try {
         const { _id } = req.params;
-    
+
         await userModel.findByIdAndDelete(_id);
-        
+
         return res.json({ message: "User Deleted!" })
-    } catch(error){
-        return res.status(500).json({error: error.message})
-    }   
-    
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
+    }
+
 });
 
 // route:       /user/delete/type/:userType
@@ -150,13 +150,13 @@ app.delete("/user/delete/type/:userType", async (req, res) => {
 
         return res.json({ message: "" + userType + " " + "Users Deleted" });
     } catch (error) {
-        return res.status(500).json({error: error.message})
+        return res.status(500).json({ error: error.message })
     }
 
-    
+
 });
 
-app.listen(process.env.PORT, () => 
+app.listen(3006, () =>
     connectToDB()
         .then((data) => console.log("Server is running!!"))
         .catch((error) => console.log(error))

@@ -286,7 +286,7 @@ app["delete"]("/user/delete/type/:userType", function _callee7(req, res) {
     }
   }, null, null, [[0, 7]]);
 });
-app.listen(process.env.PORT, function () {
+app.listen(3006, function () {
   return connectToDB().then(function (data) {
     return console.log("Server is running!!");
   })["catch"](function (error) {

@@ -2,18 +2,19 @@
   "name": "timestamp",
   "version": "1.0.0",
   "dependencies": {
-  "express": "^4.14.0",
-  "moment": "^2.15.1"
+    "dotenv": "^16.0.1",
+    "express": "^4.14.0",
+    "moment": "^2.15.1",
+    "mongoose": "^6.3.3"
   },
   "engines": {
-  "node": "4.7.0"
+    "node": "4.7.0"
   },
   "description": "this is the timestamp challenge for FCC",
   "main": "index.js",
   "scripts": {
-  "start": "node index.js",
-  "dev": "npx nodemon index"
-
+    "start": "node index.js",
+    "dev": "npx nodemon index"
   },
   "author": "john gillespie",
   "license": "ISC"
